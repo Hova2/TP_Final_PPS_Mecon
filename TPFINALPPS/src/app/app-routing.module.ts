@@ -9,7 +9,9 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)},
   { path: 'qr', loadChildren: './pages/qr/qr.module#QrPageModule' },
   { path: 'qr', loadChildren: './pages/qr/qr.module#QrPageModule' },
-  { path: 'splash', component: SplashComponent }
+  { path: 'splash', component: SplashComponent },  { path: 'carrito-compras', loadChildren: './pages/carrito-compras/carrito-compras.module#CarritoComprasPageModule' },
+  { path: 'modal-carrito', loadChildren: './pages/modal-carrito/modal-carrito.module#ModalCarritoPageModule' }
+
   //{ path: 'prueba', loadChildren: './pages/lectorqr/lectorqr.page.html' }
 
 ];
