@@ -4,7 +4,10 @@
       <ion-avatar slot="start">
         <img src="../../../assets/icon/icon1024.png" />
       </ion-avatar>
-      <ion-label>{{titulo}}</ion-label>
+      <ion-label>{{ titulo }}</ion-label>
+      <ion-button *ngIf="habilitarSalir" (click)="salir()" color="danger"
+        >Salir</ion-button
+      >
     </ion-item>
   </ion-toolbar>
 </ion-header>

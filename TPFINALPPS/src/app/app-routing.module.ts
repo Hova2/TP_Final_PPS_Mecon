@@ -1,17 +1,29 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { GenerarQRComponent } from './componentes/generar-qr/generar-qr.component';
-import { SplashComponent } from './componentes/splash/splash.component';
-
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)},
-  { path: 'qr', loadChildren: './pages/qr/qr.module#QrPageModule' },
-  { path: 'qr', loadChildren: './pages/qr/qr.module#QrPageModule' },
-  { path: 'splash', component: SplashComponent }
-  //{ path: 'prueba', loadChildren: './pages/lectorqr/lectorqr.page.html' }
-
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'empleado',
+    loadChildren: './pages/empleado/empleado.module#EmpleadoPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'supervisor',
+    loadChildren: './pages/supervisor/supervisor.module#SupervisorPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cliente',
+    loadChildren: './pages/cliente/cliente.module#ClientePageModule',
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
@@ -20,4 +32,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

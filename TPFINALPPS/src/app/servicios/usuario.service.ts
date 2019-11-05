@@ -4,12 +4,16 @@ import { Usuario } from '../clases/usuario';
 import { Cliente } from '../clases/cliente';
 import { Supervisor } from '../clases/supervisor';
 import { Empleado } from '../clases/empleado';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private angularFireAuth: AngularFireAuth
+  ) {}
 
   persistirUsuario(usuario: Usuario, uid: string) {
     this.firestore
@@ -69,5 +73,9 @@ export class UsuarioService {
     } catch (err) {}
 
     return salida;
+  }
+
+  traerUsuarioActivo() {
+    return this.angularFireAuth.auth.currentUser.uid;
   }
 }
