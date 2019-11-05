@@ -6,6 +6,7 @@ import { SacarFotoComponent } from './sacar-foto/sacar-foto.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { SplashComponent } from './splash/splash.component';
 import { InputNombreComponent } from './input-nombre/input-nombre.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { InputNombreComponent } from './input-nombre/input-nombre.component';
   declarations: [LeerQRComponent, SacarFotoComponent, AvatarComponent,SplashComponent,InputNombreComponent],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    FormsModule
   ],
   exports: [LeerQRComponent, SacarFotoComponent, AvatarComponent,SplashComponent, InputNombreComponent]
 })

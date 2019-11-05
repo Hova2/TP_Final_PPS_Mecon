@@ -23,6 +23,7 @@ export class LoginPage implements OnInit {
   public clave: string;
   public showSplash = true;
   public showApp = false;
+  public nombre: string;
 
 
 
@@ -80,9 +81,9 @@ export class LoginPage implements OnInit {
     console.log('Nuevo estado:' + this.chk);
   }
 
-  mostrarNombre(n:string)
-  {
-    this.escrito = n;
+  leerNombre(n: string){
+    this.nombre = n;
+    console.log(this.nombre);
   }
   
   
