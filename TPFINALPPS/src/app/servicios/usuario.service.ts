@@ -76,6 +76,15 @@ export class UsuarioService {
   }
 
   traerUsuarioActivo() {
-    return this.angularFireAuth.auth.currentUser.uid;
+    this.angularFireAuth.auth.onAuthStateChanged(user => {
+      if (user) {
+        console.log('logueado');
+        console.log(this.angularFireAuth.auth.currentUser.uid);
+        return this.angularFireAuth.auth.currentUser.uid;
+      } else {
+        console.log('No logueado');
+      }
+    });
+    return null;
   }
 }

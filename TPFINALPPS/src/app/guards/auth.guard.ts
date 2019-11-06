@@ -2,29 +2,32 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  CanActivate
+  CanActivate,
+  Router
 } from '@angular/router';
-import { UsuarioService } from '../servicios/usuario.service';
+
+import { AuthService } from '../servicios/auth.service';
+import { Observable } from 'rxjs';
+import { tap, map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private usrService: UsuarioService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): boolean {
-    let salida = false;
-
-    console.log(this.usrService.traerUsuarioActivo());
-
-
-    if (this.usrService.traerUsuarioActivo()) {
-      salida = true;
-    }
-    
-    return salida;
+  ): Observable<boolean> {
+    return this.authService.usuarioActualObservable().pipe(
+      take(1),
+      map(usuario => !!usuario),
+      tap(estaIniciado => {
+        if (!estaIniciado) {
+          this.router.navigate(['/login']);
+        }
+      })
+    );
   }
 }

@@ -29,8 +29,8 @@ export class LoginPage implements OnInit {
         this.clave = 'admin';
         break;
       case 'user':
-        this.email = 'usuario';
-        this.clave = 'usuario';
+        this.email = 'email@email.com';
+        this.clave = 'pruebaprueba';
         break;
     }
   }

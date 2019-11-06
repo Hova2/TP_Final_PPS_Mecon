@@ -3,16 +3,21 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { UsuarioService } from './usuario.service';
 import { Usuario } from '../clases/usuario';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  usuario: Observable<firebase.User>;
+
   constructor(
     private angularFireAuth: AngularFireAuth,
     private userService: UsuarioService,
     private router: Router
-  ) {}
+  ) {
+    this.usuario = this.angularFireAuth.authState;
+  }
 
   async registracion(usuario: Usuario, password: string): Promise<string> {
     let salida = 'Se dio de alta un nuevo usuario';
@@ -59,7 +64,6 @@ export class AuthService {
 
   async salir(): Promise<string> {
     let salida = 'El usuario salio correctamente';
-
     try {
       const res = await this.angularFireAuth.auth.signOut();
       this.router.navigate(['/login']);
@@ -68,5 +72,9 @@ export class AuthService {
     }
 
     return salida;
+  }
+
+  usuarioActualObservable(): Observable<firebase.User> {
+    return this.usuario;
   }
 }
