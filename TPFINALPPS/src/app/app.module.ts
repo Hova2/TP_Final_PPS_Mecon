@@ -20,6 +20,8 @@ import { File } from '@ionic-native/file/ngx'
 import { WebView } from '@ionic-native/ionic-webview/ngx'
 import { NuestrosComponentesModule } from './componentes/nuestros-componentes.module';
 import { ModalCarritoPageModule } from './pages/modal-carrito/modal-carrito.module';
+import { Vibration } from '@ionic-native/vibration/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,7 +49,8 @@ import { ModalCarritoPageModule } from './pages/modal-carrito/modal-carrito.modu
     BarcodeScanner,
     AngularFirestore,
     AuthService,
-    UsuarioService
+    UsuarioService,
+    Vibration
   ],
   bootstrap: [AppComponent]
 })
