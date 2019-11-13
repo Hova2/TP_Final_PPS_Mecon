@@ -8,16 +8,19 @@ import { SplashComponent } from './splash/splash.component';
 import { InputNombreComponent } from './input-nombre/input-nombre.component';
 import { FormsModule } from '@angular/forms';
 import { InputApellidoComponent } from './input-apellido/input-apellido.component';
+import { InputPasswordComponent } from './input-password/input-password.component';
+
 
 
 
 @NgModule({
-  declarations: [LeerQRComponent, SacarFotoComponent, AvatarComponent,SplashComponent,InputNombreComponent, InputApellidoComponent],
+  // tslint:disable-next-line: max-line-length
+  declarations: [LeerQRComponent, SacarFotoComponent, AvatarComponent, SplashComponent, InputNombreComponent, InputApellidoComponent, InputPasswordComponent],
   imports: [
     CommonModule,
     IonicModule,
     FormsModule
   ],
-  exports: [LeerQRComponent, SacarFotoComponent, AvatarComponent,SplashComponent, InputNombreComponent,InputApellidoComponent]
+  exports: [LeerQRComponent, SacarFotoComponent, AvatarComponent, SplashComponent, InputNombreComponent, InputApellidoComponent, InputPasswordComponent]
 })
 export class NuestrosComponentesModule { }

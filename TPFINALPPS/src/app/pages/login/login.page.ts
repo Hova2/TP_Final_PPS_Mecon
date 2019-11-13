@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
 
   public nombre: string;
   public apellido: string;
+  public password: string;
 
 
 
@@ -82,13 +83,22 @@ export class LoginPage implements OnInit {
     console.log('Nuevo estado:' + this.chk);
   }
 
-  //leerNombre(n: string){
-  //  this.nombre = n;}
+
+  //PRUEBAS DE INPUTS
+
+  leerNombre(n: string){
+   this.nombre = n;}
 
   leerApellido(a: string){
     this.apellido = a;
     console.log(this.apellido);// solo lo muestra cuando esta validado!!!
   }
+
+  leerPassword(p: string){
+    this.password = p;
+    console.log(this.password);// solo lo muestra cuando esta validado
+  }
+
 
 
 }

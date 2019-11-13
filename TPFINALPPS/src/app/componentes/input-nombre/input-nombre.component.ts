@@ -20,7 +20,7 @@ export class InputNombreComponent implements OnInit {
   v() {
      console.log(this.val_letras(this.nombre));
 
-     if (this.nombre.length < 5 || !this.val_letras(this.nombre)) {
+     if (this.nombre.length < 5 || this.nombre.length > 30 || !this.val_letras(this.nombre)) {
       this.cumple = false;
     } else {
       this.cumple = true;
