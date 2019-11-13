@@ -36,7 +36,7 @@ export class UsuarioService {
             .collection('/usuarios')
             .doc(usuario.uid)
             .ref.get();
-          return documento.then(doc => {
+          documento.then(doc => {
             const datos = JSON.parse(JSON.stringify(doc.data()));
             switch (datos.rol) {
               case 'cliente':
