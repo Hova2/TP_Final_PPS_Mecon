@@ -1,0 +1,4 @@
+<ion-label position="stacked">Apellido: </ion-label>
+<ion-icon *ngIf="cumple" name="checkmark-circle" color ="success"></ion-icon>
+<ion-icon *ngIf="!cumple"name="close-circle" color="danger"></ion-icon>
+<ion-input [(ngModel)]="apellido" required type="text" required ="true"  placeholder="Ingrese apellido -  [A-Z;a-z]" (ionChange)="v_apellido()" ></ion-input>

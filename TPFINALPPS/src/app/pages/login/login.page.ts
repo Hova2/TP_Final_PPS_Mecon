@@ -6,6 +6,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { timer } from 'rxjs';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { InputApellidoComponent} from '../../componentes/input-apellido/input-apellido.component';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,11 @@ export class LoginPage implements OnInit {
   public clave: string;
   public showSplash = true;
   public showApp = false;
+
+  // para poder insertar los inputs en la pagina loguin
+
   public nombre: string;
+  public apellido: string;
 
 
 
@@ -77,8 +82,13 @@ export class LoginPage implements OnInit {
     console.log('Nuevo estado:' + this.chk);
   }
 
-  leerNombre(n: string){
-    this.nombre = n;
-    // console.log(this.nombre);
+  //leerNombre(n: string){
+  //  this.nombre = n;}
+
+  leerApellido(a: string){
+    this.apellido = a;
+    console.log(this.apellido);// solo lo muestra cuando esta validado!!!
   }
+
+
 }

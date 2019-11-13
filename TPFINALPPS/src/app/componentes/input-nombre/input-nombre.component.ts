@@ -1,7 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { Validators } from '@angular/forms';
-import { element } from 'protractor';
-import { stringify } from 'querystring';
 
 @Component({
   selector: "app-input-nombre",
