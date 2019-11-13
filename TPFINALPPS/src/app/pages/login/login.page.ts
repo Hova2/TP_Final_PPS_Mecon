@@ -83,7 +83,7 @@ export class LoginPage implements OnInit {
 
   leerNombre(n: string){
     this.nombre = n;
-    console.log(this.nombre);
+    //console.log(this.nombre);
   }
   
   
