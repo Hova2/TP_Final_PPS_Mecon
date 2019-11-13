@@ -17,7 +17,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 export class LoginPage implements OnInit {
   public mostrar: boolean;
-  public escrito:string;
+  public escrito: string;
   public chk: boolean;
   public email: string;
   public clave: string;
@@ -32,10 +32,7 @@ export class LoginPage implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    
-
-  ) 
-  
+  )
   {
     this.initializeApp();
   }
@@ -61,7 +58,6 @@ export class LoginPage implements OnInit {
     this.authService.ingresar(this.email, this.clave);
   }
 
-  
   registracion() {}
 
   completar(parametro) {
@@ -83,8 +79,6 @@ export class LoginPage implements OnInit {
 
   leerNombre(n: string){
     this.nombre = n;
-    //console.log(this.nombre);
+    // console.log(this.nombre);
   }
-  
-  
 }

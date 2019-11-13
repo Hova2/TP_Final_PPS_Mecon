@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Validators } from '@angular/forms';
 import { element } from 'protractor';
+import { stringify } from 'querystring';
 
 @Component({
   selector: "app-input-nombre",
@@ -20,10 +21,9 @@ export class InputNombreComponent implements OnInit {
   ngOnInit() {}
 
   v() {
-     console.log(this.nombre);
-  
+     console.log(this.val_letras(this.nombre));
 
-    if (this.nombre.length < 5 ){// && this.val_letras(this.nombre)) {
+     if (this.nombre.length < 5 || !this.val_letras(this.nombre)) {
       this.cumple = false;
     } else {
       this.cumple = true;
@@ -32,27 +32,25 @@ export class InputNombreComponent implements OnInit {
 
   }
 
-  public val_letras(palabra:string) :boolean
+  public val_letras(palabra: string): boolean
 
   {
-   let estado = false;
-   const l = "1234567890.:,;{}[]()'¿¡-!?";
-   
-  for(let p of palabra )
+   let estado = true;
+   const l = '1234567890.:,;{}[]()\'¿¡-!? ';
+   let i: number;
+   for (i = 0; i < palabra.length;i++)
+
   {
-    for(let n of l)
+    for (let n of l)
     {
-      if(p===l)
+      if (palabra[i] === n)
       {
-        //console.log("pe: ",p,"ele: ",l);
-      
         estado = false;
         break;
       }
     }
   }
 
-  return estado;
-   
+   return estado;
   }
 }
