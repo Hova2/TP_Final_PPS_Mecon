@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Usuario } from '../clases/usuario';
 import { UsuarioService } from './usuario.service';
 
@@ -68,9 +67,5 @@ export class AuthService {
     }
 
     return salida;
-  }
-
-  usuarioActualObservable(): Observable<firebase.User> {
-    return this.angularFireAuth.authState;
   }
 }

@@ -12,17 +12,20 @@ const routes: Routes = [
   {
     path: 'empleado',
     loadChildren: './pages/empleado/empleado.module#EmpleadoPageModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { rol: 'empleado' }
   },
   {
     path: 'supervisor',
     loadChildren: './pages/supervisor/supervisor.module#SupervisorPageModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { rol: 'supervisor' }
   },
   {
     path: 'cliente',
     loadChildren: './pages/cliente/cliente.module#ClientePageModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { rol: 'cliente' }
   }
 ];
 

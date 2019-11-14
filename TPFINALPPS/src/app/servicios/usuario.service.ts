@@ -6,62 +6,56 @@ import { Supervisor } from '../clases/supervisor';
 import { Empleado } from '../clases/empleado';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  usuario$: Observable<Usuario>;
+  usuario$: Observable<any>;
 
   constructor(
-    private firestore: AngularFirestore,
+    private angularFireStore: AngularFirestore,
     private angularFireAuth: AngularFireAuth
   ) {
     this.usuario$ = this.buscarUsuarioFirebase();
   }
 
   persistirUsuario(usuario: Usuario, uid: string) {
-    this.firestore
+    this.angularFireStore
       .collection('/usuarios')
       .doc(uid)
       .set(Object.assign({}, JSON.parse(JSON.stringify(usuario))));
   }
 
-  private buscarUsuarioFirebase(): Observable<Usuario> {
+  private buscarUsuarioFirebase(): Observable<any> {
     const salida = this.angularFireAuth.authState.pipe(
       switchMap(usuario => {
         if (usuario) {
-          const documento = this.firestore
-            .collection('/usuarios')
-            .doc(usuario.uid)
-            .ref.get();
-          documento.then(doc => {
-            const datos = JSON.parse(JSON.stringify(doc.data()));
-            switch (datos.rol) {
-              case 'cliente':
-                return this.firestore
-                  .doc<Cliente>('usuarios/' + usuario.uid)
-                  .valueChanges() as Observable<Cliente>;
-              case 'supervisor':
-                return this.firestore
-                  .doc<Supervisor>('usuarios/' + usuario.uid)
-                  .valueChanges() as Observable<Supervisor>;
-              case 'empleado':
-                return this.firestore
-                  .doc<Empleado>('usuarios/' + usuario.uid)
-                  .valueChanges() as Observable<Empleado>;
-            }
-          });
+          return this.angularFireStore
+            .doc<any>(`usuarios/${usuario.uid}`)
+            .valueChanges();
         } else {
           return of(null);
+        }
+      }),
+      map(usuario => {
+        if (usuario) {
+          switch (usuario.rol) {
+            case 'cliente':
+              return usuario as Observable<Cliente>;
+            case 'supervisor':
+              return usuario as Observable<Supervisor>;
+            case 'empleado':
+              return usuario as Observable<Empleado>;
+          }
         }
       })
     );
     return salida;
   }
 
-  traerUsuarioActivo(): Observable<Usuario> {
+  traerUsuarioActivo(): Observable<any> {
     return this.usuario$;
   }
 }
