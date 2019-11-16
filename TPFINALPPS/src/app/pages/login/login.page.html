@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <app-splash *ngIf="showSplash"></app-splash>
 
 <app-avatar *ngIf="showApp" titulo="LOGIN"> </app-avatar>
@@ -62,3 +63,66 @@
 
 
 </ion-content>
+=======
+<app-splash *ngIf="showSplash"></app-splash>
+
+<app-avatar *ngIf="showApp" titulo="LOGIN"> </app-avatar>
+
+<!-- <app-generar-qr> </app-generar-qr> -->
+
+<ion-content *ngIf="showApp" class="ion-padding">
+    <ion-content *ngIf="showApp" class="ion-padding">
+  <app-leer-qr> </app-leer-qr>
+  <!-- <app-sacar-foto></app-sacar-foto> -->
+
+  <ion-input
+    [disabled]="chk"
+    type="text"
+    [(ngModel)]="email"
+    placeholder="Usuario"
+    name="uname"
+    required
+  ></ion-input>
+  <ion-input
+    [disabled]="chk"
+    type="password"
+    [(ngModel)]="clave"
+    placeholder="Clave"
+    name="psw"
+    required
+  ></ion-input>
+  <!-- <ion-checkbox [(ngModel)]="chk"></ion-checkbox> -->
+
+  <ion-label expand="block">
+    <ion-checkbox [(ngModel)]="chk"></ion-checkbox>
+    Ingresar como invitado
+  </ion-label>
+
+  <ion-button (click)="ingresar()" expand="block">Iniciar Sesión</ion-button>
+  <ion-button (click)="registracion()" color="secondary" expand="block">Registrarse</ion-button>
+    
+  
+
+  <!-- <ion-button [disabled]="chk" expand="block" color="secondary" href="/register" routerDirection="forward">Registrarse</ion-button>  -->
+
+  <app-input-password (salidaPassword)="leerPassword($event)"></app-input-password>
+  
+
+
+
+  <ion-fab>
+    <ion-fab-button [disabled]="chk" (click)="completar('admin')" color="dark"
+      >Admin</ion-fab-button
+    >
+    <ion-fab-button [disabled]="chk" (click)="completar('user')" color="light"
+      >User</ion-fab-button
+    >
+  </ion-fab>
+
+
+  
+
+
+
+</ion-content>
+>>>>>>> fe196dd9c7f91b643b4d8f621fdae12be4c8afc9

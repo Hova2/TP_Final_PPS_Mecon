@@ -19,6 +19,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx'
 import { WebView } from '@ionic-native/ionic-webview/ngx'
 import { NuestrosComponentesModule } from './componentes/nuestros-componentes.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +32,8 @@ import { NuestrosComponentesModule } from './componentes/nuestros-componentes.mo
     AngularFireAuthModule,
     NuestrosComponentesModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     StatusBar,
